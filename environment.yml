@@ -69,7 +69,6 @@ dependencies:
   - lz4-c
   - markupsafe
   - matplotlib-base
-  - menuinst
   - mkl
   - mkl-service
   - numexpr
