@@ -8,7 +8,7 @@
   # Choices are:
   #       local : Run locally.. Good to test out runs on small batches before sending to AWS.
   #       aws_batch: use for analyses with > 1000 simulations: This is currently only available for NRCan staff.  If you would wish to make used of Amazon cloud computing, please contact us.
-  :compute_environment: local
+  :compute_environment: aws_batch
 
   # Use btap_public_cli for full opensource version. For btap_private_cli to use costing. Contact us if you wish to work with costing data.
   :image_name: 'btap_private_cli'
@@ -20,11 +20,11 @@
 
   # Branch from https://github.com/NREL/openstudio-standards. Typically 'nrcan_prod' branch.
   # Developers or people liking to work on unstable code can use 'nrcan'
-  :os_standards_branch: 'nrcan_prod'
+  :os_standards_branch: 'nrcan'
 
   # Branch from https://github.com/canmet-energy/btap_costing. Typically 'nrcan_prod'
   # Developers or people liking to work on unstable code can use 'master'
-  :btap_costing_branch: ''
+  :btap_costing_branch: 'master'
 
   # DO NOT CHANGE: Openstudio Version 3.2.1 currently used.
   :os_version: '3.2.1'
@@ -38,11 +38,11 @@
   :run_annual_simulation: true
 
   # Do you wish to enable automated costing for materials, labour, equipment? Disabled in btap_public_cli version.
-  :enable_costing: false
+  :enable_costing: true
 
   # Set this to true or None to perform a reference run of all the building_type, primary_heating_fuel, and location present in this file ahead of the analysis.
   # This will automatically create comparisons to the reference cases generated in the analysis.
-  :run_reference: true
+  :run_reference: false
 
   ###########################################     ALGORITHM        #######################################################
   :algorithm:
@@ -56,11 +56,8 @@
     :random_seed: 1
 
 ###########################################     Hourly Data     #######################################################
-  # Note: the 'operation' and 'unit' keys in :output_variables are for performing operations on hourly output.
-  # For now, allowed operation type is 'sum'; allowed units are 'GJ' and 'kWh'.
   :output_variables: [
-    { key: '*',     variable: 'Zone Air Temperature',     frequency: 'hourly',     operation: '*',     unit: '*' },
-    { key: '*',     variable: 'Lights Total Heating Energy',     frequency: 'hourly',     operation: 'sum',     unit: 'GJ' }
+    #{    key: '*',     variable: 'Zone Air Temperature',     frequency: 'hourly'}
   ]
   :output_meters: [
     {    name: 'NaturalGas:Facility',     frequency: 'hourly'},
@@ -78,14 +75,14 @@
     # "PrimarySchool",
     # "SmallOffice",
     # "MediumOffice",
-    # "LargeOffice",
+     "LargeOffice",
     # "SmallHotel",
     # "LargeHotel",
     # "Warehouse",
     # "RetailStandalone",
     # "RetailStripmall",
     # "QuickServiceRestaurant",
-      "FullServiceRestaurant",
+    #  "FullServiceRestaurant",
     # "MidriseApartment",
     # "HighriseApartment",
     # "LowriseApartment",
@@ -264,9 +261,7 @@
                '0.4',
                '0.5',
                '0.6',
-               '0.7',
-               '0.8',
-               '0.9'
+               '0.69'
   ]
 
   :srr_set: [ 'NECB_Default',
@@ -317,5 +312,5 @@
   :baseline_system_zones_map_option: [ # Options: (1) 'NECB_Default'/'none'/nil (i.e. 'one_sys_per_bldg'), (2) 'one_sys_per_dwelling_unit', (3) 'one_sys_per_bldg'
    'NECB_Default',
 #   'one_sys_per_bldg', # Note: this option is the default  (i.e. 'NECB_Default')
-   'one_sys_per_dwelling_unit'
+#   'one_sys_per_dwelling_unit'
  ]
