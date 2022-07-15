@@ -42,7 +42,7 @@
 
   # Set this to true or None to perform a reference run of all the building_type, primary_heating_fuel, and location present in this file ahead of the analysis.
   # This will automatically create comparisons to the reference cases generated in the analysis.
-  :run_reference: true
+  :run_reference: false
 
   ###########################################     ALGORITHM        #######################################################
   :algorithm:
