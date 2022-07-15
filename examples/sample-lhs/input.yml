@@ -32,7 +32,7 @@
   # The name of the analysis. Can be a user friendly name. This is how it will appear on your local system or on the S3
   # bucket. for example if 'example_analysis' on s3 the analysis run input/output files will be here in our s3 bucket
   # s3://834599497928/phylroy.lopez/example_analysis
-  :analysis_name: 'sample_lhs_example'
+  :analysis_name: 'sample_lhs_example_instance_test'
 
   # Do you wish to run the simulations?
   :run_annual_simulation: true
@@ -42,7 +42,7 @@
 
   # Set this to true or None to perform a reference run of all the building_type, primary_heating_fuel, and location present in this file ahead of the analysis.
   # This will automatically create comparisons to the reference cases generated in the analysis.
-  :run_reference: false
+  :run_reference: true
 
   ###########################################     ALGORITHM        #######################################################
   :algorithm:
@@ -56,6 +56,8 @@
     :random_seed: 1
 
 ###########################################     Hourly Data     #######################################################
+  # Note: the 'operation' and 'unit' keys in :output_variables are for performing operations on hourly output.
+  # For now, allowed operation type is 'sum'; allowed units are 'GJ' and 'kWh'.
   :output_variables: [
     #{    key: '*',     variable: 'Zone Air Temperature',     frequency: 'hourly'}
   ]
@@ -71,7 +73,7 @@
 # Building options
 :building_options:
   :building_type: [
-    #  "SecondarySchool",
+     "SecondarySchool",
     # "PrimarySchool",
     # "SmallOffice",
     # "MediumOffice",
@@ -84,7 +86,7 @@
     # "QuickServiceRestaurant",
     #  "FullServiceRestaurant",
     # "MidriseApartment",
-    # "HighriseApartment",
+     "HighriseApartment",
     # "LowriseApartment",
     #"Hospital",
     #"Outpatient"
@@ -98,17 +100,16 @@
       "NECB2017"
   ]
   :epw_file: [
-      'CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw',
-    #'CAN_NS_Halifax.Dockyard.713280_CWEC2016.epw',
-    #'CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw',
-    #'CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw',
-    #'CAN_AB_Calgary.Intl.AP.718770_CWEC2016.epw',
-    #'CAN_ON_Toronto.Pearson.Intl.AP.716240_CWEC2016.epw',
-    #'CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw'
+    'CAN_QC_Montreal-Trudeau.Intl.AP.716270_CWEC2016.epw',
+    'CAN_AB_Edmonton.Intl.AP.711230_CWEC2016.epw',
+    'CAN_BC_Vancouver.Intl.AP.718920_CWEC2016.epw',
+    'CAN_AB_Calgary.Intl.AP.718770_CWEC2016.epw',
+    'CAN_ON_Toronto.Pearson.Intl.AP.716240_CWEC2016.epw',
+    'CAN_YT_Whitehorse.Intl.AP.719640_CWEC2016.epw'
   ]
   :primary_heating_fuel: [
-      #"Electricity",
-      "NaturalGas",
+      "Electricity",
+      #"NaturalGas",
     # "FuelOilNo2"
   ]
   :dcv_type: [
@@ -148,26 +149,26 @@
   # What are the existing vs all versions?
   :boiler_eff: [
       "NECB_Default",
-      "NECB 85% Efficient Condensing Boiler",
-      "NECB 88% Efficient Condensing Boiler",
-      "NECB 91% Efficient Condensing Boiler",
-      "NECB 94% Efficient Condensing Boiler",
-      "Viessmann Vitocrossal 300 CT3-17 96.2% Efficient Condensing Gas Boiler"
+      #"NECB 85% Efficient Condensing Boiler",
+      #"NECB 88% Efficient Condensing Boiler",
+      #"NECB 91% Efficient Condensing Boiler",
+      #"NECB 94% Efficient Condensing Boiler",
+      #"Viessmann Vitocrossal 300 CT3-17 96.2% Efficient Condensing Gas Boiler"
   ]
   :furnace_eff: [
       "NECB_Default",
-      "NECB 85% Efficient Condensing Gas Furnace",
-      "NECB 88% Efficient Condensing Gas Furnace",
-      "NECB 91% Efficient Condensing Gas Furnace",
-      "NECB 94% Efficient Condensing Gas Furnace"
+      #"NECB 85% Efficient Condensing Gas Furnace",
+      #"NECB 88% Efficient Condensing Gas Furnace",
+      #"NECB 91% Efficient Condensing Gas Furnace",
+      #"NECB 94% Efficient Condensing Gas Furnace"
   ]
   :shw_eff: [
       "NECB_Default",
-      "Natural Gas 85% Efficient SHW",
-      "Natural Gas 88% Efficient SHW",
-      "Natural Gas Direct Vent with Electric Ignition",
-      "Natural Gas Power Vent with Electric Ignition",
-      "Natural Gas Power Vent with Electric Ignition 97% Efficient"
+      #"Natural Gas 85% Efficient SHW",
+      #"Natural Gas 88% Efficient SHW",
+      #"Natural Gas Direct Vent with Electric Ignition",
+      #"Natural Gas Power Vent with Electric Ignition",
+      #"Natural Gas Power Vent with Electric Ignition 97% Efficient"
   ]
   # Default DHW is consistent with primary heating fuel
   :ext_wall_cond: [ #'NECB_Default',
@@ -261,7 +262,9 @@
                '0.4',
                '0.5',
                '0.6',
-               '0.69'
+               '0.7',
+               '0.8',
+               '0.9'
   ]
 
   :srr_set: [ 'NECB_Default',
