@@ -1,3 +1,10 @@
+if __name__ == '__main__':
+    from pathlib import Path
+    fp = Path(__file__).parent.parent.parent.resolve()
+
+    import sys
+    sys.path.append(str(fp))
+
 import src.btap_batch as btap
 import os
 

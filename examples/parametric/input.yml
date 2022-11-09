@@ -42,7 +42,7 @@
 
   # Set this to true or None to perform a reference run of all the building_type, primary_heating_fuel, and location present in this file ahead of the analysis.
   # This will automatically create comparisons to the reference cases generated in the analysis.
-  :run_reference: true
+  :run_reference: false
 
 #########################################  Algorithm  ###########################################################
   :algorithm:
@@ -52,13 +52,13 @@
   # Note: the 'operation' and 'unit' keys in :output_variables are for performing operations on hourly output.
   # For now, allowed operation type is 'sum'; allowed units are 'GJ' and 'kWh'.
   :output_variables: [
-    { key: '*',     variable: 'Zone Air Temperature',     frequency: 'hourly',     operation: '*',     unit: '*' },
-    { key: '*',     variable: 'Lights Total Heating Energy',     frequency: 'hourly',     operation: 'sum',     unit: 'GJ' }
+    # { key: '*',     variable: 'Zone Air Temperature',     frequency: 'hourly',     operation: '*',     unit: '*' },
+    # { key: '*',     variable: 'Lights Total Heating Energy',     frequency: 'hourly',     operation: 'sum',     unit: 'GJ' }
   ]
   :output_meters: [
-    {    name: 'NaturalGas:Facility',     frequency: 'hourly'},
-    {    name: 'Electricity:Facility',     frequency: 'hourly'},
-    {    name: 'FuelOil#2:Facility',     frequency: 'hourly'}
+    # {    name: 'NaturalGas:Facility',     frequency: 'hourly'},
+    # {    name: 'Electricity:Facility',     frequency: 'hourly'},
+    # {    name: 'FuelOil#2:Facility',     frequency: 'hourly'}
   ]
 
 #########################################  BUILDING OPTIONS (All inputs should be 'strings') ###########################################################
@@ -326,7 +326,7 @@
   :baseline_system_zones_map_option: [ # Options: (1) 'NECB_Default'/'none'/nil (i.e. 'one_sys_per_bldg'), (2) 'one_sys_per_dwelling_unit', (3) 'one_sys_per_bldg'
    'NECB_Default',
 #   'one_sys_per_bldg', # Note: this option is the default  (i.e. 'NECB_Default')
-   'one_sys_per_dwelling_unit'
+  #  'one_sys_per_dwelling_unit'
  ]
   :npv_start_year: [ # Options: (1) 'NECB_Default'/nil/'none' (i.e. set it as 2022), (2) an integer number larger than 2005 (first year of neb_end_use_prices.csv)
     'NECB_Default',
